@@ -182,7 +182,12 @@ Using the World database, write the SQL command to **list countries that have mo
 
 Using the World database, write the SQL command to **find cities where the district value is missing**.
 
-*Hint: Use `LIKE` and the dash (`-`) since some rows use that instead of actual data.*
+*Hint: Use Postgres`TRIM()` function and hyphen, en dash, or em dash as needed since some rows use that instead of actual data.*
+```SQL
+WHERE district IS NULL
+   OR TRIM(district) = ''
+   OR TRIM(district) IN ('-', '–', '—')
+```
 
 ### SQL
 

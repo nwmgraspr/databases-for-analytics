@@ -44,15 +44,15 @@ _Show the table structure or DESCRIBE output._
 ```sql
 DESCRIBE country;
 ```
-![Q1 Screenshot](docs/images/q1_datatypes.png)
+![Q1 Screenshot](screenshots/q1_datatypes.png)
 
 ---
 
 ## Question 2
 
 **What is the data type of `country.IndepYear`?**
-- The country.IndepYear uses the SMALLINT data type. 
-Why do you think this data type was selected? 
+- The country.IndepYear uses the SMALLINT data type.
+Why do you think this data type was selected?
 ### Answer
 -This data type was selected because an independence year is a whole number without decimal places. It stores the range of years needed while using less storage than regular INT.
 

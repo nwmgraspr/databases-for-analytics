@@ -1,6 +1,6 @@
 # Exercise 01: World Database SQL Practice
 
-- Name:
+- Name: Ralph Massaquoi
 - Course: Database for Analytics
 - Module: 1
 - Database Used: World Database
@@ -27,15 +27,15 @@ See:
 ## Question 1
 
 **Compare and contrast the data types used for:**
-
-- `country.Population`
-- `country.LifeExpectancy`
+- country.Populate uses integer data type, while country.LifeExpectancy uses decimal data type.
 
 Why were these data types selected?
 
 ### Answer
 
-_Write your explanation here._
+- `country.Population`- population is an integer because it represents a count of people and it is represented by a whole number.
+- `country.LifeExpectancy`- life expectancy is a decimal because, it is an estimate and can therefore be represented by a decimal number.
+
 
 ### Screenshot
 
@@ -44,19 +44,17 @@ _Show the table structure or DESCRIBE output._
 ```sql
 DESCRIBE country;
 ```
-
-![Q1 Screenshot](screenshots/q1_datatypes.png)
+![Q1 Screenshot](docs/images/q1_datatypes.png)
 
 ---
 
 ## Question 2
 
 **What is the data type of `country.IndepYear`?**
-Why do you think this data type was selected?
-
+- The country.IndepYear uses the SMALLINT data type. 
+Why do you think this data type was selected? 
 ### Answer
-
-_Write your explanation here._
+-This data type was selected because an independence year is a whole number without decimal places. It stores the range of years needed while using less storage than regular INT.
 
 ### Screenshot
 
@@ -75,7 +73,7 @@ Explain why your proposed data type might be better in some situations.
 
 ### Answer
 
-_Write your explanation here._
+_Year can be used as another data type for country.IndepYear because it will indicates that the column stores a calendar year rather than a number. This can help to valid year values.
 
 ---
 
@@ -179,8 +177,16 @@ Use reasonable values for the remaining columns.
 ### SQL
 
 ```sql
-INSERT INTO country (Code, Name, Continent, Region, Population)
-VALUES ('NAR', 'Narnia', 'Europe', 'Fantasy', 1000000);
+INSERT INTO country (
+    Code, Name, Continent, Region, SurfaceArea, IndepYear,
+    Population, LifeExpectancy, GNP, GNPOld, LocalName,
+    GovernmentForm, HeadOfState, Capital, Code2
+)
+VALUES (
+    'NAR', 'Narnia', 'Europe', 'Fantasy', 100000.00, NULL,
+    1000000, 75.0, 5000.00, NULL, 'Narnia',
+    'Monarchy', 'King Tirian', NULL, 'NA'
+);
 ```
 
 ### Screenshot

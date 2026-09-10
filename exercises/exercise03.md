@@ -189,10 +189,7 @@ Your results should include:
 ### MongoDB Query
 
 ```javascript
-db.restaurants.find(
-  { name: /IHOP/i },
-  { _id: 0, name: 1 }
-)
+db.restaurants.find({ name: /IHOP/i }, { _id: 0, name: 1 }).forEach(r => print(r.name))
 ```
 
 ### Screenshot

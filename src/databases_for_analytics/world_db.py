@@ -30,7 +30,6 @@ def build_db(
     database_file: Path,
 ) -> None:
     """Build the SQLite World database from CSV source files."""
-
     source_files: list[Path] = [
         city_file,
         country_file,

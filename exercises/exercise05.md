@@ -1,8 +1,8 @@
 # Exercise 05: SQLDA Database - Dates, Data Quality, Arrays, and JSON
 
-- Name:
+- Name: Ralph Massaquoi
 - Course: Database for Analytics
-- Module:
+- Module:5
 - Database Used: `sqlda` (Sample Datasets)
 - Tools Used: PostgreSQL (pgAdmin or psql)
 
@@ -151,7 +151,7 @@ that contain an opened date **BEFORE** the sent date.
 After looking at the data, **why is this the case?**
 
 ### Answer
-Having carefully examined the data provided in question #4, there are 109 emails found where the opened data is before the sent date. The dates are similar, but  many sent date recorded as 15:00:00 while the opened_date showed an earlier time. This suggests there is an issue with how the timestamps were recorded in the dataset.
+Having carefully examined the data provided in question #4, there are 109 emails found where the opened data is before the sent date. The dates are similar, but  many sent dates recorded as 15:00:00 while the opened_date showed an earlier time. This could be caused by time-zone difference or an issue with how the timestamps were stored or converted in the databases. I can also consider this as quality issue rather than just the emails being opened before they were sent.
 
 
 ### Screenshot (if requested by instructor)

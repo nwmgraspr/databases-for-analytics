@@ -192,7 +192,16 @@ CREATE TEMP TABLE customer_dealership_distance AS (
 ```
 
 ### Answer
-Customer Locations: The first table captures each customer's geographic coordinates (latitude and longitude) while filtering out records with missing location data.Dealership Locations: The second table stores the coordinates for every dealership.Distance Mapping: The final table pairs every customer with every dealership using a CROSS JOIN. It then calculates the physical distance between them to output a matrix showing the customer ID, dealership ID, and their calculated distance.
+Step 1: Prep the Customer Locations
+The first part creates a temporary customer table. It ignores anyone who doesn't have an address listed (where coordinates are missing). For everyone else, it combines their longitude and latitude into a single map dot called a point.
+
+Step 2: Prep the Dealership Locations
+The second part creates a temporary dealer and combines their longitude and latitude into a single map dot called a point.
+
+Step 3: Match and Measure
+The final part also creates a temporary table that will connect both the customer and the dealership tables together. It will pair every single customer with every single dealership. For example, if there are customers A, B, and C and then there are also dealership 1 and 2; it will match them like this: A-1, A-2, B-1, B-2, C-1, C-2.
+
+This sign “<@>” in PostgreSQL is a special tool that will compute the straight-line distance between every single customer and every single dealership.
 
 ---
 

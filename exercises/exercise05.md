@@ -43,7 +43,10 @@ year
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT DISTINCT
+    EXTRACT(YEAR FROM sent_date) AS year
+FROM emails
+ORDER BY year;
 ```
 
 ### Screenshot
@@ -61,14 +64,26 @@ ordered by year (as shown in the prompt).
 Output should resemble:
 
 ```text
-count   year
+count    year
+-----    ----
+...      2011
+...      2013
+...      2014
+...      2015
+...      2016
+...      2017
+...      2018
+...      2019
 ...
-```
-
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT
+    COUNT(*) AS count,
+    EXTRACT(YEAR FROM sent_date) AS year
+FROM emails
+GROUP BY EXTRACT(YEAR FROM sent_date)
+ORDER BY year;
 ```
 
 ### Screenshot
@@ -90,7 +105,13 @@ Only include emails that contain **both** a sent date and an opened date.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT
+    sent_date,
+    opened_date,
+    opened_date - sent_date AS interval
+FROM emails
+WHERE sent_date IS NOT NULL
+  AND opened_date IS NOT NULL;
 ```
 
 ### Screenshot
@@ -108,7 +129,11 @@ show emails that contain an **opened date BEFORE the sent date**.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT
+    sent_date,
+    opened_date
+FROM emails
+WHERE opened_date < sent_date;
 ```
 
 ### Screenshot
@@ -126,8 +151,8 @@ that contain an opened date **BEFORE** the sent date.
 After looking at the data, **why is this the case?**
 
 ### Answer
+Having carefully examined the data provided in question #4, there are 109 emails found where the opened data is before the sent date. The dates are similar, but  many sent date recorded as 15:00:00 while the opened_date showed an earlier time. This suggests there is an issue with how the timestamps were recorded in the dataset. 
 
-_Write your explanation here._
 
 ### Screenshot (if requested by instructor)
 
@@ -167,8 +192,7 @@ CREATE TEMP TABLE customer_dealership_distance AS (
 ```
 
 ### Answer
-
-_Write your explanation here._
+Customer Locations: The first table captures each customer's geographic coordinates (latitude and longitude) while filtering out records with missing location data.Dealership Locations: The second table stores the coordinates for every dealership.Distance Mapping: The final table pairs every customer with every dealership using a CROSS JOIN. It then calculates the physical distance between them to output a matrix showing the customer ID, dealership ID, and their calculated distance.
 
 ---
 
@@ -188,7 +212,12 @@ For example - dealership 1 is below:
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT
+    dealership_id,
+    ARRAY_AGG(last_name || ',' || first_name) AS salespeople
+FROM salespeople
+GROUP BY dealership_id
+ORDER BY dealership_id;
 ```
 
 ### Screenshot
@@ -214,7 +243,19 @@ Reference image:
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT
+    s.dealership_id,
+    ARRAY_AGG(s.last_name || ',' || s.first_name) AS salespeople,
+    d.state,
+    COUNT(*) AS salesperson_count
+FROM salespeople AS s
+JOIN dealerships AS d
+    ON s.dealership_id = d.dealership_id
+GROUP BY
+    s.dealership_id,
+    d.state
+ORDER BY
+    d.state;
 ```
 
 ### Screenshot
@@ -231,7 +272,9 @@ the **customers** table to **JSON**.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT
+    row_to_json(customers)
+FROM customers;
 ```
 
 ### Screenshot
@@ -258,7 +301,22 @@ Reference image:
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT row_to_json(dealership_data)
+FROM (
+    SELECT
+        s.dealership_id,
+        ARRAY_AGG(s.last_name || ',' || s.first_name) AS salespeople,
+        d.state,
+        COUNT(*) AS salesperson_count
+    FROM salespeople AS s
+    JOIN dealerships AS d
+        ON s.dealership_id = d.dealership_id
+    GROUP BY
+        s.dealership_id,
+        d.state
+    ORDER BY
+        d.state
+) AS dealership_data;
 ```
 
 ### Screenshot

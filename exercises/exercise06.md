@@ -129,4 +129,3 @@ Design Notes
 The date, customer, and part dimensions tables were chosen because information needed for this analysis can be obtained from them. The date dimension allows sales to be analyzed by a specific date, month, quarter, and year. The customer dimension supports analysis by individual customers and ZIP code, while the part dimension supports analysis by part number and product category.
 
 The fact table has a grain of daily sales by date, customer, and part, with amount and quantity as the facts. This design supports questions such as how many part ax12 were sold on a specific date, how much customer 124 spent during a year, and how many appliance items were sold during a quarter. The star schema was assembled with the fact table in the center and the Date, Customer, and Part dimension tables connected directly to it.
-

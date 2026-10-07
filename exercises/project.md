@@ -118,7 +118,6 @@ number of records in each table.
 
 ### SQL
 
-```sql
 SELECT 'customers' AS table_name, COUNT(*) AS total_rows
 FROM customers
 
@@ -141,7 +140,6 @@ UNION ALL
 
 SELECT 'order_payments', COUNT(*)
 FROM order_payments;
-```
 
 ### Results
 

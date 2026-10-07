@@ -153,42 +153,36 @@ imported data and confirm that the columns and values were loaded correctly.
 
 ### Customers
 
-```sql
+'''sql
 SELECT * FROM customers;
-```
-
+'''
 ![Customers Table](../screenshots/project/select_customers.png)
 
 ### Orders
 
-```sql
+'''sql
 SELECT * FROM orders;
-```
-
+'''
 ![Orders Table](../screenshots/project/select_orders.png)
 
 ### Products
-
-```sql
+'''sql
 SELECT * FROM products;
-```
-
+'''
 ![Products Table](../screenshots/project/select_products.png)
 
 ### Order Items
-
-```sql
+'''sql
 SELECT * FROM order_items;
-```
+'''
 
 ![Order Items Table](../screenshots/project/select_order_items.png)
 
 ### Order Payments
 
-```sql
+'''sql
 SELECT * FROM order_payments;
-```
-
+'''
 ![Order Payments Table](../screenshots/project/select_order_payments.png)
 
 ## 8. Interesting Queries and Data Verification
@@ -204,7 +198,7 @@ This query joins the `customers` and `orders` tables using `customer_id`.
 It shows the customer's city and state along with the order ID, order
 status, and purchase date.
 
-```sql
+''''sql
 SELECT
     c.customer_city,
     c.customer_state,
@@ -215,8 +209,7 @@ FROM customers AS c
 JOIN orders AS o
     ON c.customer_id = o.customer_id
 LIMIT 20;
-```
-
+'''''
 ![Customers and Orders Join](../screenshots/project/customers_orders_join.png)
 
 
@@ -239,7 +232,9 @@ JOIN order_items AS oi
     ON o.order_id = oi.order_id
 GROUP BY c.customer_state
 ORDER BY total_sales DESC;
-```
+
+''''''
+
 
 ### Results
 

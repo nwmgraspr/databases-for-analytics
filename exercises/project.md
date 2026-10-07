@@ -197,8 +197,7 @@ available by examining a single table.
 This query joins the `customers` and `orders` tables using `customer_id`.
 It shows the customer's city and state along with the order ID, order
 status, and purchase date.
-
-''''sql
+'''sql
 SELECT
     c.customer_city,
     c.customer_state,
@@ -209,7 +208,8 @@ FROM customers AS c
 JOIN orders AS o
     ON c.customer_id = o.customer_id
 LIMIT 20;
-'''''
+
+'''
 ![Customers and Orders Join](../screenshots/project/customers_orders_join.png)
 
 
@@ -220,7 +220,7 @@ product sales for each customer state. The query joins the `customers`,
 `orders`, and `order_items` tables and uses aggregate functions to
 summarize the data.
 
-```sql
+'''sql
 SELECT
     c.customer_state,
     COUNT(DISTINCT o.order_id) AS total_orders,
@@ -233,9 +233,7 @@ JOIN order_items AS oi
 GROUP BY c.customer_state
 ORDER BY total_sales DESC;
 
-''''''
-
-
+'''
 ### Results
 
 ![Sales by State](../screenshots/project/sales_by_state.png)

@@ -38,12 +38,15 @@ The screenshot below shows the original dataset files after they were downloaded
 
 ## 3. Dataset Format, Columns, and Rows
 
-The original datasets were provided in CSV format and imported into PostgreSQL. The following query verifies the number of records and columns in each database table.
+The original datasets were provided in CSV format and imported into PostgreSQL.
+The following query verifies the number of records and columns in each database
+table.
 
-**Note:** The original dataset contained three CSV files. The routes table was created later in PostgreSQL during the data transformation process and contains 4,693 unique origin-to-destination routes.
+**Note:** The original dataset contained three CSV files. The `routes` table
+was created later in PostgreSQL during the data transformation process and
+contains 4,693 unique origin-to-destination routes.
 
-
-'''sql
+```sql
 SELECT
     t.table_name,
     t.number_of_records,
@@ -51,7 +54,7 @@ SELECT
 FROM (
     SELECT 'airlines' AS table_name, COUNT(*) AS number_of_records
     FROM airlines
-    
+
     UNION ALL
 
     SELECT 'airports', COUNT(*)
@@ -84,10 +87,9 @@ ORDER BY
         WHEN 'flights' THEN 3
         WHEN 'routes' THEN 4
     END;
-    '''
+```
 
 ![Table Row and Column Counts](../screenshots/project/table_row_column_counts.png)
-
 The `flights` table is the largest table, containing more than 5.8 million records. This demonstrates the size and complexity of the dataset used in
 this project.
 

@@ -3,9 +3,13 @@
 ## 2015 Flight Delays and Cancellations Database Analysis
 
 **Name:** Ralph Massaquoi
+
 **Operating System:** Windows 11
+
 **Database:** PostgreSQL 18
-**Database Name:** `flight_delays_db`
+
+**Database Name:** 'flight_delays_db`
+
 **Database Tool:** pgAdmin 4
 
 

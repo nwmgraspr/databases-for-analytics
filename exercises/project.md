@@ -42,6 +42,7 @@ The original datasets were provided in CSV format and imported into PostgreSQL. 
 
 **Note:** The original dataset contained three CSV files. The routes table was created later in PostgreSQL during the data transformation process and contains 4,693 unique origin-to-destination routes.
 
+
 '''sql
 SELECT
     t.table_name,
@@ -50,7 +51,7 @@ SELECT
 FROM (
     SELECT 'airlines' AS table_name, COUNT(*) AS number_of_records
     FROM airlines
-
+    
     UNION ALL
 
     SELECT 'airports', COUNT(*)
@@ -97,7 +98,7 @@ The following data dictionary shows the attributes and data types for each table
 
 ### 4.1 Airlines Table
 
-'''sql
+```sql
 SELECT
     column_name AS attribute,
     data_type
@@ -105,12 +106,13 @@ FROM information_schema.columns
 WHERE table_schema = 'public'
   AND table_name = 'airlines'
 ORDER BY ordinal_position;
-'''
+```
+
 ![Airlines Data Dictionary](../screenshots/project/data_dictionary_airlines.png)
 
 ### 4.2 Airports Table
 
-'''sql
+```sql
 SELECT
     column_name AS attribute,
     data_type
@@ -118,12 +120,13 @@ FROM information_schema.columns
 WHERE table_schema = 'public'
   AND table_name = 'airports'
 ORDER BY ordinal_position;
-'''
+```
+
 ![Airports Data Dictionary](../screenshots/project/data_dictionary_airports.png)
 
 ### 4.3 Flights Table
 
-'''sql
+```sql
 SELECT
     ordinal_position AS column_number,
     column_name AS attribute,
@@ -132,14 +135,15 @@ FROM information_schema.columns
 WHERE table_schema = 'public'
   AND table_name = 'flights'
 ORDER BY ordinal_position;
-'''
+```
+
 ![Flights Data Dictionary Part 1](../screenshots/project/data_dictionary_flights_1.png)
 
 ![Flights Data Dictionary Part 2](../screenshots/project/data_dictionary_flights_2.png)
 
 ### 4.4 Routes Table
 
-'''sql
+```sql
 SELECT
     ordinal_position AS column_number,
     column_name AS attribute,
@@ -148,7 +152,8 @@ FROM information_schema.columns
 WHERE table_schema = 'public'
   AND table_name = 'routes'
 ORDER BY ordinal_position;
-'''
+```
+
 ![Routes Data Dictionary](../screenshots/project/data_dictionary_routes.png)
 
 ## 5. Data Transformation

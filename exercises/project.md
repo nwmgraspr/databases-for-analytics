@@ -2,10 +2,10 @@
 
 ## 2015 Flight Delays and Cancellations Database Analysis
 
-**Name:** Ralph Massaquoi  
-**Operating System:** Windows 11  
-**Database:** PostgreSQL 18  
-**Database Name:** `flight_delays_db`  
+**Name:** Ralph Massaquoi
+**Operating System:** Windows 11
+**Database:** PostgreSQL 18
+**Database Name:** `flight_delays_db`
 **Database Tool:** pgAdmin 4
 
 
@@ -21,7 +21,7 @@ information about airline operations, delays, cancellations, airports, and fligh
 ## 2. Initial Data Source
 
 The project uses the **2015 Flight Delays and Cancellations** dataset.
-**Dataset Link:** 
+**Dataset Link:**
 https://www.kaggle.com/datasets/usdot/flight-delays?select=airlines.csv
 
 The original data was provided in CSV format and consisted of three main files:
@@ -525,10 +525,3 @@ ORDER BY cancellation_rate_percent DESC;
 The results show that **American Eagle Airlines (MQ)** had the highest cancellation rate in the dataset at approximately **5.10%**, with **15,025 cancelled flights out of 294,632 total flights**.
 
 Atlantic Southeast Airlines (EV) had the next highest cancellation rate at approximately **2.66%**. This analysis demonstrates how aggregate functions can be used to compare operational performance among airlines.
-
-
-
-
-
-
-
